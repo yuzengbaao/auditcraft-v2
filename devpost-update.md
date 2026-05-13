@@ -64,4 +64,4 @@ Building a real backend taught us that:
 ## Try it out
 - **Live API**: http://142.171.227.166:8000
 - **GitHub**: https://github.com/yuzengbaao/auditcraft-v2
-- **Video**: [YouTube URL placeholder]
+- **Video**: https://youtu.be/CZOjSuQ0-4A

@@ -16,6 +16,7 @@ Learn by doing. Break things safely.
 
 #SmartContracts #Solidity #Web3Security #Hackathon
 
+🎥 Video: https://youtu.be/CZOjSuQ0-4A
 🔗 GitHub: https://github.com/yuzengbaao/auditcraft-v2
 
 ---

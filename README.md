@@ -6,6 +6,8 @@
 
 ## 📸 Screenshot
 
+🎥 **Demo Video**: [Watch on YouTube](https://youtu.be/CZOjSuQ0-4A)
+
 ![AuditCraft v2 Screenshot]([Screenshot Placeholder])
 
 ---
