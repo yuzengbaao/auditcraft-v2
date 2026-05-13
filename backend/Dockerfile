@@ -23,6 +23,9 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
+# Pre-install solc compiler (avoids runtime download)
+RUN python3 -c "from solcx import install_solc; install_solc('0.8.19')" || echo "solc install skipped - will retry at runtime"
+
 # Copy application code
 COPY . .
 
