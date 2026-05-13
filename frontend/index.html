@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AuditCraft v2 — Smart Contract Security Sandbox</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Fira Code for monospace aesthetics (optional CDN; falls back to Consolas) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <div class="app-container">
+    <!-- Header -->
+    <header>
+      <div class="brand">
+        <span class="brand-icon">🛡️</span>
+        <h1>AuditCraft <span>v2</span></h1>
+      </div>
+      <div id="status-badge" class="status-badge offline">Checking…</div>
+    </header>
+
+    <!-- Alert / Toast Area -->
+    <div id="alert-box" class="alert"></div>
+
+    <!-- Code Editor -->
+    <section class="editor-section">
+      <div class="section-label">
+        <span>Solidity Source</span>
+        <span style="color:var(--fg-secondary);font-size:11px">Paste contract code below</span>
+      </div>
+      <textarea
+        id="source-code"
+        class="code-editor"
+        placeholder="pragma solidity ^0.8.0;\ncontract MyContract {\n  ...\n}"
+        spellcheck="false"
+      ></textarea>
+
+      <div class="toolbar">
+        <button id="btn-analyze" class="btn btn-primary">
+          <span id="spinner" class="spinner"></span>
+          <span id="btn-text">Analyze</span>
+        </button>
+        <button id="btn-clear" class="btn btn-secondary">Clear</button>
+        <button id="btn-load-sample" class="btn btn-secondary">Load Sample</button>
+        <select id="solc-version" class="version-select" title="Target solc version">
+          <option value="0.8.19">solc 0.8.19</option>
+          <option value="0.8.20">solc 0.8.20</option>
+          <option value="0.8.21">solc 0.8.21</option>
+          <option value="0.8.22">solc 0.8.22</option>
+          <option value="0.8.23">solc 0.8.23</option>
+          <option value="0.8.24">solc 0.8.24</option>
+          <option value="0.8.25">solc 0.8.25</option>
+        </select>
+      </div>
+    </section>
+
+    <!-- Results -->
+    <section class="results-section">
+      <div class="results-header section-label">
+        <span>Findings</span>
+        <div id="summary-chips" class="summary-chips"></div>
+      </div>
+      <div id="findings-container" class="findings-container">
+        <div class="empty-state">
+          <div class="icon">🔍</div>
+          <p>Run Analyze to see security findings.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

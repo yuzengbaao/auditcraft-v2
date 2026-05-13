@@ -1,0 +1,53 @@
+# AuditCraft v2 - Docker Compose
+# Usage: docker compose up --build
+
+version: "3.9"
+
+services:
+  backend:
+    build: ./backend
+    container_name: auditcraft-backend
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql://auditcraft:auditcraft@db:5432/auditcraft
+      - REDIS_URL=redis://redis:6379/0
+      - PYTHONDONTWRITEBYTECODE=1
+      - PYTHONUNBUFFERED=1
+    depends_on:
+      - db
+      - redis
+    networks:
+      - auditcraft-net
+    restart: unless-stopped
+
+  db:
+    image: postgres:14-alpine
+    container_name: auditcraft-db
+    environment:
+      POSTGRES_USER: auditcraft
+      POSTGRES_PASSWORD: auditcraft
+      POSTGRES_DB: auditcraft
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - auditcraft-net
+    restart: unless-stopped
+
+  redis:
+    image: redis:7-alpine
+    container_name: auditcraft-redis
+    ports:
+      - "6379:6379"
+    networks:
+      - auditcraft-net
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+
+networks:
+  auditcraft-net:
+    driver: bridge
